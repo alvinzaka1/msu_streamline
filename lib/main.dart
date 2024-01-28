@@ -316,8 +316,6 @@ class Page4 extends StatefulWidget {
 }
 
 class _Page4State extends State<Page4> {
-  // Add your state variables here
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -328,18 +326,9 @@ class _Page4State extends State<Page4> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            IconButton(icon: Image.asset('imwest.jpg'),
-            iconSize: 50,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => Page4()));
-            }
-              )
-            
-            //buildPicture('Bus 30', 'images/bus30.jpg'),
-            //buildPicture('Bus 31', 'images/bus31.jpg'),
-            //buildPicture('Bus 33', 'images/bus33.jpg'),
+            buildPicture('Bus 30', 'images/bus30.jpg'),
+            buildPicture('Bus 31', 'images/bus31.jpg'),
+            buildPicture('Bus 33', 'images/bus33.jpg'),
           ],
         ),
       ),
