@@ -336,11 +336,11 @@ class Page4 extends StatefulWidget {
 }
 
 class _Page4State extends State<Page4> {
-  @override
+    @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Page 4'),
+        title: Text('Bus Route'),
       ),
       body: Center(
         child: Column(
@@ -358,8 +358,29 @@ class _Page4State extends State<Page4> {
     return Card(
       child: ListTile(
         title: Text(title),
-        trailing: Image(image: AssetImage(route))
+        trailing: GestureDetector(
+          onTap: () {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  content: Image(image: AssetImage(route)),
+                  actions: <Widget>[
+                    TextButton(
+                      child: const Text('Close'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
+          },
+          child: Image(image: AssetImage(route)),
+        ),
       ),
     );
+
   }
 }
