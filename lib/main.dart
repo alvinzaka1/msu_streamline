@@ -23,37 +23,57 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.green,
         title: const Text('Michigan State University Widget'),
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(
-              child: Text('Go to Page 2'),
-              onPressed: () {
+            // Your existing widgets go here
+          ],
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: const EdgeInsets.all(0),
+          children: [
+            const SizedBox(
+              height: 128,
+              child: DrawerHeader(
+                decoration: BoxDecoration(color: Colors.green),
+                margin: EdgeInsets.all(0),
+                child: Text("MSU Resources"),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.location_city),
+              title: const Text("Maps"),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Page4()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.price_change),
+              title: const Text("Sparty's"),
+              onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Page2()),
                 );
               },
             ),
-            ElevatedButton(
-              child: Text('Go to Page 3'),
-              onPressed: () {
+            ListTile(
+              leading: const Icon(Icons.sports_basketball),
+              title: const Text("Recreation"),
+              onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Page3()),
                 );
               },
             ),
-            ElevatedButton(
-  child: Text('Go to Page 4'),
-  onPressed: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => Page4()),
-    );
-  },
-),
+            // Add more ListTiles as needed
           ],
         ),
       ),
