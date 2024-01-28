@@ -9,19 +9,66 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: const Text('Michigan State University Widget'),
       ),
-      body: Container(
-        margin: const EdgeInsets.all(50),
-        padding: const EdgeInsets.all(10),
-        child: const Text('Combo X Change Counters'),
-        color: Colors.green,
-        height: 100,
-        width: 100,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ElevatedButton(
+              child: Text('Go to Page 2'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Page2()),
+                );
+              },
+            ),
+            ElevatedButton(
+              child: Text('Go to Page 3'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Page3()),
+                );
+              },
+            ),
+          ],
+        ),
       ),
-    ));
+    );
+  }
+}
+
+class Page2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Page 2'),
+      ),
+    );
+  }
+}
+
+class Page3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Page 3'),
+      ),
+    );
   }
 }
