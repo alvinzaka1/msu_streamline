@@ -328,9 +328,20 @@ class _Page4State extends State<Page4> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // Add your widgets here
+            buildPicture('Bus 30', 'images/bus30.jpg'),
+            buildPicture('Bus 31', 'images/bus31.jpg'),
+            buildPicture('Bus 33', 'images/bus33.jpg'),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget buildPicture(String title, String route) {
+    return Card(
+      child: ListTile(
+        title: Text(title),
+        trailing: Image(image: AssetImage(route))
       ),
     );
   }
