@@ -58,6 +58,7 @@ flutter:
     - images/bus30.jpg
     - images/bus31.jpg
     - images/bus33.jpg
+    - images/sparty.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -21,16 +21,93 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: const Text('Michigan State University Widget'),
+        title: const Text('Michigan State University'),
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            // Your existing widgets go here
-          ],
+      body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+
+              Transform.scale(
+                scale: 2,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                      color: Colors.grey,
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 3),
+                      ),
+                    ],
+                    color: Colors.green,
+                    borderRadius: BorderRadius.all(Radius.circular(20))
+                  ),
+                  
+                  width: 150,
+                  height: 50,
+                    child: const Column(
+                      children: [
+                        Text('Welcome to MSU Streamline!', textAlign: TextAlign.center,),
+                      ],)
+              ),
+              ),
+              
+              Transform.scale(
+                scale: 2,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                      color: Colors.grey,
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 3),
+                      ),
+                    ],
+                    color: Colors.green,
+                    borderRadius: BorderRadius.all(Radius.circular(20))
+                  ),
+                  
+                  width: 150,
+                  height: 50,
+                    child: const Column(
+                      children: [
+                        Text(
+                          'Click the button in the top left corner to get started!',
+                          style: TextStyle(fontSize: 11),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],)
+              ),
+              ),
+              Transform.scale(
+                scale: 2,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                      color: Colors.grey,
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 3),
+                      ),
+                    ],
+                    color: Colors.green,
+                    borderRadius: BorderRadius.all(Radius.circular(20))
+                  ),
+                  
+                  width: 150,
+                  height: 150,
+                    child: const Column(
+                      children: [
+                        Image (image: AssetImage('images/sparty.jpg'),),
+                      ],)
+              ),
+              ),
+            ],
+          ),
         ),
-      ),
       drawer: Drawer(
         child: ListView(
           padding: const EdgeInsets.all(0),
@@ -282,49 +359,64 @@ class Page3 extends StatefulWidget {
 }
 
 class _Page3State extends State<Page3> {
-  int counter1 = Random().nextInt(100); // Random number between 0 and 99
-  int counter2 = Random().nextInt(100);
-  int counter3 = Random().nextInt(100);
+  List<int> data = [122, 101, 81, 121, 159, 190, 197, 178, 236, 210, 203, 175, 164, 125, 88, 75, 11, 0];
+  List<int> data2 = [20, 63, 31, 63, 55, 66, 35, 75, 41, 67, 142, 106, 70, 59, 88, 61, 34, 28];
+  List<int> data3 = [0, 0, 8, 78, 12, 24, 22, 28, 41, 47, 24, 16, 0, 0, 0, 0, 0, 0];
+  int index = 0;
+  int index2 = 0;
+  int index3 = 0;
+  int counter1=0;
+  int counter2=0;
+  int counter3=0;
+
+  @override
+  void initState() {
+    super.initState();
+    counter1 = data[index];
+    counter2 = data2[index2];
+    counter3 = data3[index3];
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 32, 77, 34),
-        title: Text('Page 3'),
+        title: Text('IM GYM HOURLY UPDATE 01/26'),
       ),
-      body: ListView(
+      body: Column(
         children: <Widget>[
-          buildSection('IM WEST', counter1, () {
-            setState(() {
-              counter1 += Random().nextBool() ? 2 : -2;
-            });
-          }),
-          const Image(image: AssetImage('images/imwest.jpg'),),
-          buildSection('IM EAST', counter2, () {
-            setState(() {
-              counter2 += Random().nextBool() ? 2 : -2;
-            });
-          }),
-          buildSection('IM CIRCLE', counter3, () {
-            setState(() {
-              counter3 += Random().nextBool() ? 2 : -2;
-            });
-          }),
+          ListTile(
+            title: Text(' IM WEST (Click to Update Hourly)'),
+            trailing: Text('$counter1'),
+            onTap: () {
+              setState(() {
+                index = (index + 1) % data.length;
+                counter1 = data[index];
+              });
+            },
+          ),
+          ListTile(
+            title: Text('IM EAST (Click to Update Hourly)'),
+            trailing: Text('$counter2'),
+            onTap: () {
+              setState(() {
+                index2 = (index2 + 1) % data2.length;
+                counter2 = data2[index2];
+              });
+            },
+          ),
+          ListTile(
+            title: Text('IM CIRCLE (Click to Update Hourly)'),
+            trailing: Text('$counter3'),
+            onTap: () {
+              setState(() {
+                index3 = (index3 + 1) % data3.length;
+                counter3 = data3[index3];
+              });
+            },
+          ),
         ],
-      ),
-    );
-  }
-
-  Widget buildSection(String title, int counter, VoidCallback onUpdate) {
-    return Card(
-      child: ListTile(
-        title: Text(title),
-        subtitle: Text('Counter: $counter'),
-        trailing: ElevatedButton(
-          child: Text('Update'),
-          onPressed: onUpdate,
-        ),
       ),
     );
   }
